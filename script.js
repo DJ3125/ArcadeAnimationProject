@@ -873,9 +873,9 @@ function PlayerHorizontalMovement(){
             }
             if (CheckHitBoxes(PlayerSprite.HitDown, 0, false)) {
                 if(Frames%30===0){
-                    PlayerSprite.image.src = 'Pictures/' + PlayerSprite.WalkAnimation[(PlayerSprite.WalkAnimation.indexOf(imagesrc.substring(71, imagesrc.length - 4)) + 1) % PlayerSprite.WalkAnimation.length] + '.jpg';
-                }else{
-                    PlayerSprite.image.src = 'Pictures/' + PlayerSprite.WalkAnimation[(PlayerSprite.WalkAnimation.indexOf(imagesrc.substring(71, imagesrc.length - 4))) % PlayerSprite.WalkAnimation.length] + '.jpg';
+                    PlayerSprite.currentImage = PlayerSprite.currentImage || 0;
+                    PlayerSprite.currentImage = (PlayerSprite.currentImage + 1) % PlayerSprite.WalkAnimation.length;
+                    PlayerSprite.image.src = `Pictures/${PlayerSprite.WalkAnimation[PlayerSprite.currentImage]}.jpg`
                 }
             } else {
                 PlayerSprite.image.src = 'Pictures/Player2.jpg'
